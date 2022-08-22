@@ -5,11 +5,12 @@ const modalMain = document.getElementById('modal_main'),
 
 modalMain.classList.toggle('modal_active');
 
-modalClose.forEach(item => item.onclick = function() {
+modalClose.forEach(item => item.onclick = function() {  
   modalMain.classList.remove('modal_active');
-    modalSuccess.classList.remove('modal_active');
+  modalSuccess.classList.remove('modal_active');
 });
 
 showSuccess.onclick = function() {
-  modalSuccess.classList.add('modal_active');
+  modalSuccess.classList.toggle('modal_active');
+  modalMain.style.display = "none";
 };
