@@ -1,15 +1,16 @@
-const reveal = Array.from(document.querySelectorAll('.reveal'));
+const reveals = Array.from(document.querySelectorAll(".reveal"));
+
+const viewportHeight = window.innerHeight;
 
 document.addEventListener('scroll', () => {
-    reveal.forEach(el => {
-        const viewportHeight = window.innerHeight,
-              elementTop= el.getBoundingClientRect().top;
-        if (elementTop < viewportHeight) {
-            el.classList.add('reveal_active');
-        } else if (elementTop <= 0) {
-            el.classList.remove('reveal_active');
+    for (let reveal of reveals) {
+        if (reveal.getBoundingClientRect().top < viewportHeight) {
+            reveal.classList.add('reveal_active');
         } else {
-            el.classList.remove('reveal_active');
+            reveal.classList.remove('reveal_active');
         }
-    });
+        if (reveal.getBoundingClientRect().top <= 0) {
+            reveal.classList.remove('reveal_active');
+        }
+    }
 });
